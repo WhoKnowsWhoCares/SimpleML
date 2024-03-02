@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  SimpleML:
+    container_name: simpleml
+    restart: always
+    env_file:
+      - .env
+      # - prod.env
+    # image: registry.frants.site/textsummary:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # ports:
+    #   - "${PORT}:${PORT}"
+    # expose:
+    #   - ${PORT}
+    # volumes:
+    #   - ./data:/app/data
+    # healthcheck:
+    #   test: curl --fail -s http://localhost:${PORT}/ || exit 1
+    #   interval: 20s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 60s
+    command: ["python","main.py"]
